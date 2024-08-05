@@ -17,12 +17,15 @@ function CardView({ setGoodLots, setBadLots }: CardViewProps) {
   const [parkingLots, setParkingLots] = useState<ParkingLot[]>([]);
 
   const [nextOffset, setNextOffset] = useState(5);
-  const { loading, fetchMore, error } = useQuery<{
+  const { loading, fetchMore } = useQuery<{
     getAllParkingLots: ParkingLot[];
   }>(GET_PARKING_LOTS, {
     variables: { limit: 5, offset: 0 },
     onCompleted: (data) => {
       setParkingLots(data.getAllParkingLots);
+    },
+    onError: (error) => {
+      throw error;
     },
   });
 
@@ -34,14 +37,17 @@ function CardView({ setGoodLots, setBadLots }: CardViewProps) {
     }
 
     const firstElementRemoved = parkingLots?.slice(1);
+
     const { data, error } = await fetchMore({
       variables: {
         limit: 1,
         offset: nextOffset + 1,
       },
     });
-    setNextOffset((prev) => prev + 1);
+    if (error) throw error;
+
     const res = firstElementRemoved?.concat(data.getAllParkingLots);
+    setNextOffset((prev) => prev + 1);
     setParkingLots(res);
   }
 
