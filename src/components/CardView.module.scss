@@ -1,0 +1,14 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+
+.iconButton {
+  z-index: 1000; /* Ensure icons are below cards */
+}
+.buttonContainer {
+  margin-top: 70vh;
+  display: flex;
+  justify-content: center;
+}
