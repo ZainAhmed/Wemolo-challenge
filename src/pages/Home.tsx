@@ -37,6 +37,9 @@ function Home() {
             onClick={() => setIsSummaryView(true)}
             variant={IsSummaryView ? "contained" : "outlined"}
             className={styles.button}
+            style={{
+              color: IsSummaryView ? "white" : "#FF9A00",
+            }}
           >
             Summary View
           </Button>
@@ -44,6 +47,9 @@ function Home() {
             variant={!IsSummaryView ? "contained" : "outlined"}
             onClick={() => setIsSummaryView(false)}
             className={styles.button}
+            style={{
+              color: !IsSummaryView ? "white" : "#FF9A00",
+            }}
           >
             Card View
           </Button>

@@ -6,7 +6,7 @@ const initialState = {
   goodLots: [] as ParkingLot[],
   badLots: [] as ParkingLot[],
   parkingLots: [] as ParkingLot[],
-  nextOffset: 4,
+  nextOffset: 5,
 };
 
 function reducer(state: reducerStateType, action: ActionType) {

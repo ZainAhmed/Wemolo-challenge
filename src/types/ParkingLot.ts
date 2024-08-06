@@ -4,5 +4,6 @@ export interface ParkingLot {
   image: string;
   size: number;
   status: string;
-  location: string;
+  type: string;
+  address: string;
 }

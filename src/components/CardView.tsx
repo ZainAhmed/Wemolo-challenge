@@ -42,7 +42,7 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
     const { data, error } = await fetchMore({
       variables: {
         limit: 1,
-        offset: reducerState.nextOffset + 1,
+        offset: reducerState.nextOffset,
       },
     });
     if (error) throw error;

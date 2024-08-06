@@ -1,3 +1,5 @@
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { ParkingLot } from "../types/ParkingLot";
 import styles from "./Card.module.scss";
 type CardsProps = {
@@ -11,7 +13,29 @@ function Card({ parkingLot, zIndex }: CardsProps) {
         style={{ backgroundImage: `url(${parkingLot.image})` }}
         className={styles.card}
       >
-        <h3>{parkingLot.name}</h3>
+        <div className={styles.metadataContainer}>
+          <div className={styles.metadata}>
+            <h2>
+              {parkingLot.name} - {parkingLot.status}
+            </h2>
+            <h3>
+              <LocationOnIcon
+                className={styles.iconText}
+                sx={{ fontSize: 20 }}
+                color="primary"
+              />
+              {parkingLot.address}
+            </h3>
+            <h3>
+              <LocationCityIcon
+                className={styles.iconText}
+                sx={{ fontSize: 20 }}
+                color="primary"
+              />
+              {parkingLot.type} - {parkingLot.size} parking places
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
   );

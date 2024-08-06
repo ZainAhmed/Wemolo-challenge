@@ -9,11 +9,17 @@
   background-size: cover;
   background-position: center;
 }
-.card > h3 {
+.metadataContainer {
+  height: 50vh;
   color: white;
   display: flex;
-  justify-content: center;
+  align-items: end;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+.metadata {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .cardWrapper {
@@ -24,4 +30,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+h2,
+h3 {
+  margin: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  vertical-align: baseline;
+}
+
+.iconText {
+  display: inline-block;
+  text-align: right;
+  line-height: 1.22;
+  float: left;
+  vertical-align: baseline;
+  margin-right: 2px;
 }
