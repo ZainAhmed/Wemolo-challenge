@@ -64,6 +64,7 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
             parkingLot={lot}
             key={lot.id}
             zIndex={reducerState.parkingLots.length - index}
+            isCardView={true}
           />
         ))}
       </div>

@@ -7,6 +7,7 @@ import { GET_PARKING_LOTS } from "../graphql/queries";
 import useParkingLotReducer from "../hooks/useParkingLotReducer";
 import { ParkingLot } from "../types/ParkingLot";
 import styles from "./Home.module.scss";
+import SummaryView from "../components/SummaryView";
 function Home() {
   const [IsSummaryView, setIsSummaryView] = useState(false);
   const { reducerState, dispatch } = useParkingLotReducer();
@@ -56,7 +57,12 @@ function Home() {
         </ButtonGroup>
 
         {IsSummaryView ? (
-          <div>Summary View</div>
+          <div>
+            <SummaryView
+              goodParkingLots={reducerState.goodLots}
+              badParkingLots={reducerState.badLots}
+            />
+          </div>
         ) : (
           <CardView
             reducerState={reducerState}

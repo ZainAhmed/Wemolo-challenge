@@ -5,10 +5,14 @@ import styles from "./Card.module.scss";
 type CardsProps = {
   parkingLot: ParkingLot;
   zIndex: number;
+  isCardView: boolean;
 };
-function Card({ parkingLot, zIndex }: CardsProps) {
+function Card({ parkingLot, zIndex, isCardView }: CardsProps) {
   return (
-    <div className={styles.cardWrapper} style={{ zIndex: zIndex }}>
+    <div
+      className={isCardView ? styles.cardWrapper : styles.cardWrapperSummary}
+      style={{ zIndex: zIndex }}
+    >
       <div
         style={{ backgroundImage: `url(${parkingLot.image})` }}
         className={styles.card}
