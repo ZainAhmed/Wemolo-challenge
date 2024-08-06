@@ -1,22 +1,22 @@
 import React, { Component, ReactNode } from "react";
-
+import styles from "./ErrorBoundary.module.scss";
 type ErrorBoundaryProps = {
   children: ReactNode;
-  fallback: ReactNode;
 };
 
 type ErrorBoundaryState = {
   hasError: boolean;
+  errorMsg: string;
 };
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, errorMsg: "" };
   }
 
-  static getDerivedStateFromError(): ErrorBoundaryState {
-    return { hasError: true };
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, errorMsg: error.message };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
@@ -25,7 +25,9 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback;
+      return (
+        <div className={styles.container}>Error: {this.state.errorMsg}</div>
+      );
     }
     return this.props.children;
   }

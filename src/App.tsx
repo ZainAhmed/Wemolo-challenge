@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <ErrorBoundary fallback="There was an Error">
+        <ErrorBoundary>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
