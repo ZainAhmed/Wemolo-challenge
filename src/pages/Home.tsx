@@ -27,7 +27,7 @@ function Home() {
   if (loading) return <Loading />;
 
   return (
-    <div className={styles.homeWrapper}>
+    <>
       <div className={styles.buttonWrapper}>
         <ButtonGroup
           disableElevation
@@ -55,23 +55,22 @@ function Home() {
             Card View
           </Button>
         </ButtonGroup>
-
-        {IsSummaryView ? (
-          <div>
-            <SummaryView
-              goodParkingLots={reducerState.goodLots}
-              badParkingLots={reducerState.badLots}
-            />
-          </div>
-        ) : (
-          <CardView
-            reducerState={reducerState}
-            dispatch={dispatch}
-            fetchMore={fetchMore}
-          />
-        )}
       </div>
-    </div>
+      {IsSummaryView ? (
+        <div>
+          <SummaryView
+            goodParkingLots={reducerState.goodLots}
+            badParkingLots={reducerState.badLots}
+          />
+        </div>
+      ) : (
+        <CardView
+          reducerState={reducerState}
+          dispatch={dispatch}
+          fetchMore={fetchMore}
+        />
+      )}
+    </>
   );
 }
 

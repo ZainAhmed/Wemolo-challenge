@@ -69,27 +69,29 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
         ))}
       </div>
       <div className={styles.buttonContainer}>
-        <IconButton
-          disabled={reducerState.parkingLots.length === 0}
-          size="large"
-          className={styles.iconButton}
-          style={{
-            color: reducerState.parkingLots.length === 0 ? "grey" : "red",
-          }}
-          onClick={() => handleSelection("left")}
-        >
-          <CancelIcon sx={{ fontSize: 72 }} />
-        </IconButton>
-        <IconButton
-          disabled={reducerState.parkingLots?.length === 0}
-          className={styles.iconButton}
-          style={{
-            color: reducerState.parkingLots.length === 0 ? "grey" : "green",
-          }}
-          onClick={() => handleSelection("right")}
-        >
-          <CheckCircleIcon sx={{ fontSize: 72 }} />
-        </IconButton>
+        <div>
+          <IconButton
+            disabled={reducerState.parkingLots.length === 0}
+            size="large"
+            className={styles.iconButton}
+            style={{
+              color: reducerState.parkingLots.length === 0 ? "grey" : "red",
+            }}
+            onClick={() => handleSelection("left")}
+          >
+            <CancelIcon sx={{ fontSize: 72 }} />
+          </IconButton>
+          <IconButton
+            disabled={reducerState.parkingLots?.length === 0}
+            className={styles.iconButton}
+            style={{
+              color: reducerState.parkingLots.length === 0 ? "grey" : "green",
+            }}
+            onClick={() => handleSelection("right")}
+          >
+            <CheckCircleIcon sx={{ fontSize: 72 }} />
+          </IconButton>
+        </div>
       </div>
     </>
   );

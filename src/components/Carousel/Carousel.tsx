@@ -1,16 +1,15 @@
 import React from "react";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import {
-  SelectedSnapDisplay,
-  useSelectedSnapDisplay,
-} from "./CarouselSelectedSnapDisplay";
+import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
+import NavigateBeforeOutlinedIcon from "@mui/icons-material/NavigateBeforeOutlined";
+import { SelectedSnapDisplay } from "./CarouselSelectedSnapDisplay";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./Carousel.module.scss";
 import { ParkingLot } from "../../types/ParkingLot";
 import Card from "../Card";
 import CarouselActionButton from "./CarouselActionButton";
 import { usePrevNextButtons } from "../../hooks/usePrevNextButtons";
+import { useSelectedSnapDisplay } from "../../hooks/useSelectedSnapDisplay";
+
 type PropsType = { slides: ParkingLot[] };
 const Carousel = ({ slides }: PropsType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -48,13 +47,33 @@ const Carousel = ({ slides }: PropsType) => {
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
             btnClass="embla__button--prev"
-            icon={<ArrowCircleLeftIcon color="primary" />}
+            icon={
+              <NavigateBeforeOutlinedIcon
+                color="secondary"
+                sx={{
+                  fontSize: 50,
+                  borderRadius: "50%",
+                  border: "2px solid #fff", // Adjust color as needed
+                  padding: 0.25,
+                }}
+              />
+            }
           />
           <CarouselActionButton
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
             btnClass="embla__button--next"
-            icon={<ArrowCircleRightIcon color="primary" />}
+            icon={
+              <NavigateNextOutlinedIcon
+                color="secondary"
+                sx={{
+                  fontSize: 50,
+                  borderRadius: "50%",
+                  border: "2px solid #fff", // Adjust color as needed
+                  padding: 0.25,
+                }}
+              />
+            }
           />
         </div>
 
