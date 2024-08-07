@@ -4,11 +4,11 @@ import NavigateBeforeOutlinedIcon from "@mui/icons-material/NavigateBeforeOutlin
 import { SelectedSnapDisplay } from "./CarouselSelectedSnapDisplay";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./Carousel.module.scss";
-import { ParkingLot } from "../../types/ParkingLot";
-import Card from "../Card";
+import { ParkingLot } from "../../../types/ParkingLot";
+import Card from "../../Card";
 import CarouselActionButton from "./CarouselActionButton";
-import { usePrevNextButtons } from "../../hooks/usePrevNextButtons";
-import { useSelectedSnapDisplay } from "../../hooks/useSelectedSnapDisplay";
+import { usePrevNextButtons } from "../../../hooks/usePrevNextButtons";
+import { useSelectedSnapDisplay } from "../../../hooks/useSelectedSnapDisplay";
 
 type PropsType = { slides: ParkingLot[] };
 const Carousel = ({ slides }: PropsType) => {
@@ -49,12 +49,13 @@ const Carousel = ({ slides }: PropsType) => {
             btnClass="embla__button--prev"
             icon={
               <NavigateBeforeOutlinedIcon
-                color="secondary"
                 sx={{
                   fontSize: 50,
                   borderRadius: "50%",
-                  border: "2px solid #fff", // Adjust color as needed
+                  border: "2px solid",
                   padding: 0.25,
+                  borderColor: prevBtnDisabled ? "grey" : "white",
+                  color: prevBtnDisabled ? "grey" : "white",
                 }}
               />
             }
@@ -65,12 +66,13 @@ const Carousel = ({ slides }: PropsType) => {
             btnClass="embla__button--next"
             icon={
               <NavigateNextOutlinedIcon
-                color="secondary"
                 sx={{
                   fontSize: 50,
                   borderRadius: "50%",
-                  border: "2px solid #fff", // Adjust color as needed
+                  border: "2px solid",
                   padding: 0.25,
+                  borderColor: nextBtnDisabled ? "grey" : "white",
+                  color: nextBtnDisabled ? "grey" : "white",
                 }}
               />
             }

@@ -7,9 +7,9 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { IconButton } from "@mui/material";
 import { Dispatch } from "react";
-import { ParkingLot } from "../types/ParkingLot";
-import { ActionType, reducerStateType } from "../types/ParkingLotReducer";
-import Card from "./Card";
+import { ParkingLot } from "../../types/ParkingLot";
+import { ActionType, reducerStateType } from "../../types/ParkingLotReducer";
+import Card from "../Card";
 import styles from "./CardView.module.scss";
 
 type GetParkingLotsData = {
@@ -59,39 +59,41 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
   return (
     <>
       <div className={styles.cardContainer}>
-        {reducerState.parkingLots.map((lot, index) => (
-          <Card
-            parkingLot={lot}
-            key={lot.id}
-            zIndex={reducerState.parkingLots.length - index}
-            isCardView={true}
-          />
-        ))}
+        {reducerState.parkingLots.length > 0 ? (
+          reducerState.parkingLots.map((lot, index) => (
+            <Card
+              parkingLot={lot}
+              key={lot.id}
+              zIndex={reducerState.parkingLots.length - index}
+              isCardView={true}
+            />
+          ))
+        ) : (
+          <h1 className={styles.noLots}>No more parking lots available</h1>
+        )}
       </div>
       <div className={styles.buttonContainer}>
-        <div>
-          <IconButton
-            disabled={reducerState.parkingLots.length === 0}
-            size="large"
-            className={styles.iconButton}
-            style={{
-              color: reducerState.parkingLots.length === 0 ? "grey" : "red",
-            }}
-            onClick={() => handleSelection("left")}
-          >
-            <CancelIcon sx={{ fontSize: 72 }} />
-          </IconButton>
-          <IconButton
-            disabled={reducerState.parkingLots?.length === 0}
-            className={styles.iconButton}
-            style={{
-              color: reducerState.parkingLots.length === 0 ? "grey" : "green",
-            }}
-            onClick={() => handleSelection("right")}
-          >
-            <CheckCircleIcon sx={{ fontSize: 72 }} />
-          </IconButton>
-        </div>
+        <IconButton
+          disabled={reducerState.parkingLots.length === 0}
+          size="large"
+          className={styles.iconButton}
+          style={{
+            color: reducerState.parkingLots.length === 0 ? "grey" : "red",
+          }}
+          onClick={() => handleSelection("left")}
+        >
+          <CancelIcon sx={{ fontSize: 72 }} />
+        </IconButton>
+        <IconButton
+          disabled={reducerState.parkingLots?.length === 0}
+          className={styles.iconButton}
+          style={{
+            color: reducerState.parkingLots.length === 0 ? "grey" : "green",
+          }}
+          onClick={() => handleSelection("right")}
+        >
+          <CheckCircleIcon sx={{ fontSize: 72 }} />
+        </IconButton>
       </div>
     </>
   );

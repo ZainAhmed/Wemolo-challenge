@@ -1,0 +1,27 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+
+.iconButton {
+  z-index: 1000;
+  margin: 50px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 80vh;
+}
+
+.noLots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

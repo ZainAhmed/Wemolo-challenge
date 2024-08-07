@@ -1,13 +1,13 @@
 import { useQuery } from "@apollo/client";
 import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
-import CardView from "../components/CardView";
+import CardView from "../components/CardView/CardView";
 import Loading from "../components/Loading";
 import { GET_PARKING_LOTS } from "../graphql/queries";
 import useParkingLotReducer from "../hooks/useParkingLotReducer";
 import { ParkingLot } from "../types/ParkingLot";
 import styles from "./Home.module.scss";
-import SummaryView from "../components/SummaryView";
+import SummaryView from "../components/SummaryView/SummaryView";
 function Home() {
   const [IsSummaryView, setIsSummaryView] = useState(false);
   const { reducerState, dispatch } = useParkingLotReducer();
