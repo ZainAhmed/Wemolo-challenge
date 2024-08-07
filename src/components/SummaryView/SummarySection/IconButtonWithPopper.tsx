@@ -10,6 +10,7 @@ type PropsType = {
   handleClickAway: () => void;
   anchorEl: HTMLElement | null;
   setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  setOtherAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 };
 
 function IconButtonWithPopper({
@@ -20,9 +21,14 @@ function IconButtonWithPopper({
   handleClickAway,
   anchorEl,
   setAnchorEl,
+  setOtherAnchorEl,
 }: PropsType) {
   const handleSortIconClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl((prev) => (prev ? null : event.currentTarget));
+    setAnchorEl((prev) => {
+      if (prev) return null;
+      setOtherAnchorEl(null);
+      return event.currentTarget;
+    });
   };
 
   const isPopperOpen = Boolean(anchorEl);

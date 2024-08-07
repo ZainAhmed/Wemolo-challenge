@@ -1,11 +1,8 @@
-import FilterListIcon from "@mui/icons-material/FilterList";
 import { ParkingLot } from "../../../types/ParkingLot";
 import styles from "./SummarySection.module.scss";
 import Carousel from "./Carousel/Carousel";
-import SortingList from "./SortingList";
-import SwapVertIcon from "@mui/icons-material/SwapVert";
-import IconButtonWithPopper from "./IconButtonWithPopper";
-import { useCallback, useState } from "react";
+import { useState } from "react";
+import SortFilterButtons from "./SortFilterButtons";
 
 type PropsType = {
   parkingLots: ParkingLot[];
@@ -15,63 +12,13 @@ type PropsType = {
 
 function SummarySection({ parkingLots, title, fallbackText }: PropsType) {
   const [lots, setLots] = useState<ParkingLot[]>(parkingLots);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const handleClickAway = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
 
   return (
     <>
       <div className={`${styles.headingContainer} ${styles.blueHeading}`}>
         <div className={styles.headingWrapper}>
           <h1>{title}</h1>
-          <div className={styles.filterSortIconWrapper}>
-            <IconButtonWithPopper
-              parkingLots={lots}
-              popperInputId="sort-list-popper"
-              handleClickAway={handleClickAway}
-              anchorEl={anchorEl}
-              setAnchorEl={setAnchorEl}
-              icon={
-                <SwapVertIcon
-                  sx={{
-                    fontSize: 35,
-                    color: parkingLots.length > 0 ? "#021f35" : "lightgrey",
-                  }}
-                />
-              }
-              listToOpen={
-                <SortingList
-                  handleClickAway={handleClickAway}
-                  lots={lots}
-                  setLots={setLots}
-                />
-              }
-            />
-            <IconButtonWithPopper
-              parkingLots={lots}
-              popperInputId="sort-list-popper"
-              handleClickAway={handleClickAway}
-              anchorEl={anchorEl}
-              setAnchorEl={setAnchorEl}
-              icon={
-                <FilterListIcon
-                  sx={{
-                    fontSize: 35,
-                    color: lots.length > 0 ? "#021f35" : "lightgrey",
-                  }}
-                />
-              }
-              listToOpen={
-                <SortingList
-                  handleClickAway={handleClickAway}
-                  lots={lots}
-                  setLots={setLots}
-                />
-              }
-            />
-          </div>
+          <SortFilterButtons lots={lots} setLots={setLots} />
         </div>
       </div>
       {lots.length > 0 ? (

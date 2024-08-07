@@ -9,13 +9,13 @@ function SummaryView({ goodParkingLots, badParkingLots }: PropsType) {
     <>
       <SummarySection
         parkingLots={goodParkingLots}
-        title="Favourite Parking Lots"
-        fallbackText=" No favourite parking lots found"
+        title="Good Parking Lots"
+        fallbackText=" No good parking lots found"
       />
       {/* <SummarySection
         parkingLots={badParkingLots}
-        title="Disliked Parking Lots"
-        fallbackText=" No disliked parking lots found"
+        title="Bad Parking Lots"
+        fallbackText=" No bad parking lots found"
       /> */}
     </>
   );
