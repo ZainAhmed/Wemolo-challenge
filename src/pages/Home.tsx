@@ -5,24 +5,25 @@ import CardView from "../components/CardView/CardView";
 import Loading from "../components/Loading";
 import { GET_PARKING_LOTS } from "../graphql/queries";
 import useParkingLotReducer from "../hooks/useParkingLotReducer";
-import { ParkingLot } from "../types/ParkingLot";
 import styles from "./Home.module.scss";
 import SummaryView from "../components/SummaryView/SummaryView";
+import { ParkingLotsApiType } from "../types/api";
 function Home() {
   const [IsSummaryView, setIsSummaryView] = useState(false);
   const { reducerState, dispatch } = useParkingLotReducer();
 
-  const { loading, fetchMore } = useQuery<{
-    getAllParkingLots: ParkingLot[];
-  }>(GET_PARKING_LOTS, {
-    variables: { limit: 5, offset: 0 },
-    onCompleted: (data) => {
-      dispatch({ type: "SET_PARKING_LOTS", payload: data.getAllParkingLots });
-    },
-    onError: (error) => {
-      throw error;
-    },
-  });
+  const { loading, fetchMore } = useQuery<ParkingLotsApiType>(
+    GET_PARKING_LOTS,
+    {
+      variables: { limit: 5, offset: 0 },
+      onCompleted: (data) => {
+        dispatch({ type: "SET_PARKING_LOTS", payload: data.getAllParkingLots });
+      },
+      onError: (error) => {
+        throw error;
+      },
+    }
+  );
 
   if (loading) return <Loading />;
 

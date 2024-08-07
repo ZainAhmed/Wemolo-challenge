@@ -13,3 +13,19 @@ export const GET_PARKING_LOTS = gql`
     }
   }
 `;
+
+export const GET_DISTINCT_TYPES = gql`
+  query Query {
+    distinctTypes {
+      type
+    }
+  }
+`;
+
+export const GET_DISTINCT_STATUSES = gql`
+  query Query {
+    distinctStatuses {
+      status
+    }
+  }
+`;

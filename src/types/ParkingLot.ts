@@ -1,4 +1,4 @@
-export interface ParkingLot {
+export type ParkingLot = {
   id: string;
   name: string;
   image: string;
@@ -6,4 +6,4 @@ export interface ParkingLot {
   status: string;
   type: string;
   address: string;
-}
+};
