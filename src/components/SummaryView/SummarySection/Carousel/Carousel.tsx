@@ -4,11 +4,11 @@ import NavigateBeforeOutlinedIcon from "@mui/icons-material/NavigateBeforeOutlin
 import { SelectedSnapDisplay } from "./CarouselSelectedSnapDisplay";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./Carousel.module.scss";
-import { ParkingLot } from "../../../types/ParkingLot";
-import Card from "../../Card";
+import { ParkingLot } from "../../../../types/ParkingLot";
+import Card from "../../../Card";
 import CarouselActionButton from "./CarouselActionButton";
-import { usePrevNextButtons } from "../../../hooks/usePrevNextButtons";
-import { useSelectedSnapDisplay } from "../../../hooks/useSelectedSnapDisplay";
+import { usePrevNextButtons } from "../../../../hooks/usePrevNextButtons";
+import { useSelectedSnapDisplay } from "../../../../hooks/useSelectedSnapDisplay";
 
 type PropsType = { slides: ParkingLot[] };
 const Carousel = ({ slides }: PropsType) => {
