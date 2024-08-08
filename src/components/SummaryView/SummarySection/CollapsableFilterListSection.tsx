@@ -6,7 +6,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { Checkbox, Divider, List, ListItem, ListItemText } from "@mui/material";
 import { Fragment } from "react/jsx-runtime";
 import { useState } from "react";
-
+import styles from "./CollapsableFilterListSection.module.scss";
 type PropsType = {
   title: string;
   childListItems: string[] | undefined;
@@ -52,7 +52,11 @@ function CollapsableFilterListSection({
 
             return (
               <Fragment key={value}>
-                <ListItem key={value} disablePadding>
+                <ListItem
+                  key={value}
+                  disablePadding
+                  className={styles.yellowBg}
+                >
                   <ListItemButton
                     role={undefined}
                     onClick={handleToggle(value)}
@@ -63,6 +67,7 @@ function CollapsableFilterListSection({
                         checked={checked?.indexOf(value) !== -1}
                         tabIndex={-1}
                         disableRipple
+                        className={`${styles.checkboxes} ${styles.yellowBg}`}
                         inputProps={{ "aria-labelledby": labelId }}
                       />
                     </ListItemIcon>

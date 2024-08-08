@@ -27,19 +27,8 @@ const Carousel = ({ slides }: PropsType) => {
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   const getNavigationButtonStyles = (isDisabled: boolean) => {
-    const getSize = () => {
-      if (window.matchMedia("(max-width: 600px)").matches) {
-        return 40;
-      } else if (window.matchMedia("(max-width: 900px)").matches) {
-        return 45;
-      } else {
-        return 50;
-      }
-    };
-
-    const fontSize = getSize();
     return {
-      fontSize: `${fontSize}px`,
+      fontSize: "50px",
       borderRadius: "50%",
       border: "2px solid",
       padding: 0.25,

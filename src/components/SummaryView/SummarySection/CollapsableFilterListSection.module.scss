@@ -1,0 +1,18 @@
+@import "../../../variables.scss";
+
+.yellowBg:hover {
+  background-color: $secondaryYellow;
+  color: white;
+
+  .checkboxes {
+    color: white;
+  }
+
+  .checkboxes .MuiSvgIcon-root {
+    color: white; /* The color of the checkbox icon */
+  }
+
+  .checkboxes.Mui-checked .MuiSvgIcon-root {
+    color: white; /* Ensures the checkmark is white when checked */
+  }
+}

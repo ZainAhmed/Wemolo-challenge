@@ -1,8 +1,9 @@
+@import "../../../variables.scss";
 .listItem {
-  color: #021f35;
+  color: $primaryBlue;
 }
 
 .listItem:hover {
-  background-color: #ff9a00;
+  background-color: $secondaryYellow;
   color: white;
 }
