@@ -26,18 +26,28 @@
 
 h1 {
   font-size: 2rem;
-  // line-height: 1.2;
 }
-
+h2 {
+  font-size: 1.8rem;
+}
+.fallbackTextContainer {
+  height: 30vh;
+}
 @media (max-width: $breakpoint-xl-desktop) {
   h1 {
     font-size: 2rem;
   }
+  h2 {
+    font-size: 1.8rem;
+  }
 }
 
-@media (max-width: $breakpoint-desktop) {
+@media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
   h1 {
     font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.5rem;
   }
 }
 
@@ -45,10 +55,7 @@ h1 {
   h1 {
     font-size: 1.4rem;
   }
+  h2 {
+    font-size: 1.2rem;
+  }
 }
-
-// @media (max-width: $breakpoint-mobile) {
-//   h1 {
-//     font-size: 1.2rem;
-//   }
-// }

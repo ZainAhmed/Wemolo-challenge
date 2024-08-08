@@ -28,9 +28,11 @@ function SummarySection({ parkingLots, title, fallbackText }: PropsType) {
       {lots.length > 0 ? (
         <Carousel slides={lots} />
       ) : (
-        <h2 className={`${styles.heading} ${styles.whiteHeading}`}>
-          {fallbackText}
-        </h2>
+        <div className={styles.fallbackTextContainer}>
+          <h2 className={`${styles.heading} ${styles.whiteHeading}`}>
+            {fallbackText}
+          </h2>
+        </div>
       )}
     </>
   );
