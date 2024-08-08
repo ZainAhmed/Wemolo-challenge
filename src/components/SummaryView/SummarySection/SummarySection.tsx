@@ -18,7 +18,11 @@ function SummarySection({ parkingLots, title, fallbackText }: PropsType) {
       <div className={`${styles.headingContainer} ${styles.blueHeading}`}>
         <div className={styles.headingWrapper}>
           <h1>{title}</h1>
-          <SortFilterButtons lots={lots} setLots={setLots} />
+          <SortFilterButtons
+            lots={lots}
+            setLots={setLots}
+            unfilteredParkingLots={parkingLots}
+          />
         </div>
       </div>
       {lots.length > 0 ? (

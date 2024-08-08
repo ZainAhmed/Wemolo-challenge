@@ -35,20 +35,18 @@ function SummaryView({ goodParkingLots, badParkingLots }: PropsType) {
 
   if (loadingDistinctStatuses || loadingDistinctTypes) return <Loading />;
   return (
-    <>
-      <FilterContext.Provider value={filterValues}>
-        <SummarySection
-          parkingLots={goodParkingLots}
-          title="Good Parking Lots"
-          fallbackText=" No good parking lots found"
-        />
-        {/* <SummarySection
+    <FilterContext.Provider value={filterValues}>
+      <SummarySection
+        parkingLots={goodParkingLots}
+        title="Good Parking Lots"
+        fallbackText=" No good parking lots found"
+      />
+      <SummarySection
         parkingLots={badParkingLots}
         title="Bad Parking Lots"
         fallbackText=" No bad parking lots found"
-      /> */}
-      </FilterContext.Provider>
-    </>
+      />
+    </FilterContext.Provider>
   );
 }
 

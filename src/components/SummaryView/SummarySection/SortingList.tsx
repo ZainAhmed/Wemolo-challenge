@@ -1,28 +1,15 @@
 import { Divider, List, ListItem, ListItemText } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import styles from "./SortingList.module.scss";
-import { ParkingLot } from "../../../types/ParkingLot";
 
 export type SortingListProps = {
   handleClickAway: () => void;
-  lots: ParkingLot[];
-  setLots: Dispatch<SetStateAction<ParkingLot[]>>;
+  setSortOrder: Dispatch<SetStateAction<string>>;
 };
 
-function SortingList({ lots, setLots, handleClickAway }: SortingListProps) {
+function SortingList({ handleClickAway, setSortOrder }: SortingListProps) {
   const handleSort = (order: string) => {
-    const sortedLots = [...lots];
-    sortedLots.sort((a, b) => {
-      const numA = parseInt(a.name.match(/\d+/)?.[0] || "0", 10);
-      const numB = parseInt(b.name.match(/\d+/)?.[0] || "0", 10);
-      if (order === "asc") {
-        return numA - numB;
-      } else if (order === "desc") {
-        return numB - numA;
-      }
-      return 0;
-    });
-    setLots(sortedLots);
+    setSortOrder(order);
     handleClickAway();
   };
   return (

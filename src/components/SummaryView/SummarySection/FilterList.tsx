@@ -1,62 +1,67 @@
-import { Checkbox, List, ListItem, ListItemText } from "@mui/material";
-
+import { Button, List } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Collapse from "@mui/material/Collapse";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import { useContext, useState } from "react";
-import { FilterContext } from "../../../context/context";
-function FilterList() {
-  const [openType, setOpenType] = useState(true);
-  const [checked, setChecked] = useState([0]);
-  const filterContextVal = useContext(FilterContext);
+import { Dispatch, FormEvent, SetStateAction } from "react";
 
-  const handleClick = () => {
-    setOpenType(!openType);
-  };
+import CollapsableFilterListSection from "./CollapsableFilterListSection";
+import styles from "./FilterList.module.scss";
 
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+type PropsType = {
+  handleClickAway: () => void;
+  setFiltered: Dispatch<SetStateAction<boolean>>;
+  distinctFilterTypes: string[] | undefined;
+  distinctFilterStatuses: string[] | undefined;
+  typesChecked: string[] | undefined;
+  statusesChecked: string[] | undefined;
+  setTypesChecked: Dispatch<SetStateAction<string[] | undefined>>;
+  setStatusesChecked: Dispatch<SetStateAction<string[] | undefined>>;
+};
+function FilterList({
+  handleClickAway,
+  setFiltered,
+  distinctFilterTypes,
+  distinctFilterStatuses,
+  typesChecked,
+  statusesChecked,
+  setTypesChecked,
+  setStatusesChecked,
+}: PropsType) {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
+    setFiltered(true);
+    handleClickAway();
   };
 
   return (
-    <List component="nav" sx={{ minWidth: "158px" }}>
-      <ListItemButton onClick={handleClick}>
-        <ListItemText primary="Type" />
-        {openType ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={openType} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem disablePadding>
-            <ListItemButton
-              role={undefined}
-              //   onClick={handleToggle(value)}
-              dense
-            >
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  //   checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  //   inputProps={{ "aria-labelledby": labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText id="Type" primary={`Line item 1`} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Collapse>
-    </List>
+    <form onSubmit={handleSubmit}>
+      <List component="nav">
+        <CollapsableFilterListSection
+          title="Type"
+          childListItems={distinctFilterTypes}
+          checked={typesChecked}
+          setChecked={setTypesChecked}
+        />
+        <CollapsableFilterListSection
+          title="Status"
+          childListItems={distinctFilterStatuses}
+          checked={statusesChecked}
+          setChecked={setStatusesChecked}
+        />
+        <ListItemButton>
+          <Button
+            className={styles.applyBtn}
+            type="submit"
+            variant="contained"
+            disableElevation
+          >
+            Apply
+          </Button>
+          <Button className={styles.cancelBtn} variant="outlined">
+            Cancel
+          </Button>
+        </ListItemButton>
+      </List>
+    </form>
   );
 }
 

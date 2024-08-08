@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { ParkingLot } from "../../../types/ParkingLot";
 
 type PropsType = {
-  parkingLots: ParkingLot[];
   popperInputId: string;
   icon: ReactNode;
   listToOpen: ReactNode;
@@ -11,17 +10,18 @@ type PropsType = {
   anchorEl: HTMLElement | null;
   setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
   setOtherAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  unfilteredParkingLots: ParkingLot[];
 };
 
 function IconButtonWithPopper({
   popperInputId,
-  parkingLots,
   icon,
   listToOpen,
   handleClickAway,
   anchorEl,
   setAnchorEl,
   setOtherAnchorEl,
+  unfilteredParkingLots,
 }: PropsType) {
   const handleSortIconClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl((prev) => {
@@ -39,7 +39,7 @@ function IconButtonWithPopper({
       <>
         <IconButton
           onClick={handleSortIconClick}
-          disabled={parkingLots.length === 0}
+          disabled={unfilteredParkingLots.length === 0}
         >
           {icon}
         </IconButton>

@@ -11,21 +11,31 @@ import { usePrevNextButtons } from "../../../../hooks/usePrevNextButtons";
 import { useSelectedSnapDisplay } from "../../../../hooks/useSelectedSnapDisplay";
 
 type PropsType = { slides: ParkingLot[] };
+
 const Carousel = ({ slides }: PropsType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     dragFree: true,
     align: "start",
     containScroll: "trimSnaps",
   });
-
   const {
     prevBtnDisabled,
     nextBtnDisabled,
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
-
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+
+  const getNavigationButtonStyles = (isDisabled: boolean) => {
+    return {
+      fontSize: 50,
+      borderRadius: "50%",
+      border: "2px solid",
+      padding: 0.25,
+      borderColor: isDisabled ? "grey" : "white",
+      color: isDisabled ? "grey" : "white",
+    };
+  };
 
   return (
     <section className={styles.embla}>
@@ -49,14 +59,7 @@ const Carousel = ({ slides }: PropsType) => {
             btnClass="embla__button--prev"
             icon={
               <NavigateBeforeOutlinedIcon
-                sx={{
-                  fontSize: 50,
-                  borderRadius: "50%",
-                  border: "2px solid",
-                  padding: 0.25,
-                  borderColor: prevBtnDisabled ? "grey" : "white",
-                  color: prevBtnDisabled ? "grey" : "white",
-                }}
+                sx={getNavigationButtonStyles(prevBtnDisabled)}
               />
             }
           />
@@ -66,19 +69,11 @@ const Carousel = ({ slides }: PropsType) => {
             btnClass="embla__button--next"
             icon={
               <NavigateNextOutlinedIcon
-                sx={{
-                  fontSize: 50,
-                  borderRadius: "50%",
-                  border: "2px solid",
-                  padding: 0.25,
-                  borderColor: nextBtnDisabled ? "grey" : "white",
-                  color: nextBtnDisabled ? "grey" : "white",
-                }}
+                sx={getNavigationButtonStyles(nextBtnDisabled)}
               />
             }
           />
         </div>
-
         <SelectedSnapDisplay
           selectedSnap={selectedSnap}
           snapCount={snapCount}
