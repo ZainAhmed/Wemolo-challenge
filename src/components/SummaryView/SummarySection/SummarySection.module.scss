@@ -1,3 +1,5 @@
+@import "../../../variables.scss";
+
 .heading {
   max-width: 90vw;
   margin: auto;
@@ -21,3 +23,32 @@
   max-width: 90vw;
   margin: auto;
 }
+
+h1 {
+  font-size: 2rem;
+  // line-height: 1.2;
+}
+
+@media (max-width: $breakpoint-xl-desktop) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: $breakpoint-desktop) {
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  h1 {
+    font-size: 1.4rem;
+  }
+}
+
+// @media (max-width: $breakpoint-mobile) {
+//   h1 {
+//     font-size: 1.2rem;
+//   }
+// }

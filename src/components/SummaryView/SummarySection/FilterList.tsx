@@ -56,7 +56,11 @@ function FilterList({
           >
             Apply
           </Button>
-          <Button className={styles.cancelBtn} variant="outlined">
+          <Button
+            onClick={() => handleClickAway()}
+            className={styles.cancelBtn}
+            variant="outlined"
+          >
             Cancel
           </Button>
         </ListItemButton>

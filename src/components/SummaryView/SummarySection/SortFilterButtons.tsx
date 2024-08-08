@@ -22,6 +22,7 @@ type SortFilterButtonsProps = {
 };
 
 function SortFilterButtons({
+  lots,
   setLots,
   unfilteredParkingLots,
 }: SortFilterButtonsProps) {
@@ -67,7 +68,7 @@ function SortFilterButtons({
       setLots(statusFiltered);
       setFiltered(false);
     }
-  }, [isFiltered, sortOrder]);
+  }, [isFiltered]);
 
   const iconStyles = {
     fontSize: 35,
@@ -87,6 +88,8 @@ function SortFilterButtons({
           <SortingList
             handleClickAway={handleClickAway}
             setSortOrder={setSortOrder}
+            lots={lots}
+            setLots={setLots}
           />
         }
       />
