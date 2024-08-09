@@ -81,6 +81,7 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
             color: reducerState.parkingLots.length === 0 ? "grey" : "red",
           }}
           onClick={() => handleSelection("left")}
+          data-test-swipeBtn="reject"
         >
           <CancelIcon sx={{ fontSize: 72 }} />
         </IconButton>
@@ -91,6 +92,7 @@ function CardView({ reducerState, dispatch, fetchMore }: CardViewProps) {
             color: reducerState.parkingLots.length === 0 ? "grey" : "green",
           }}
           onClick={() => handleSelection("right")}
+          data-test-swipeBtn="accept"
         >
           <CheckCircleIcon sx={{ fontSize: 72 }} />
         </IconButton>

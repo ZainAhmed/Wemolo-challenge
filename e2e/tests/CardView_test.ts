@@ -5,4 +5,9 @@ Before(({ I }) => {
   I.see("Lot Munich 29 - inactive");
 });
 
-Scenario("Swipe Functionality", ({ I }) => {});
+Scenario("Swipe Functionality", ({ I }) => {
+  I.click("[data-test-swipeBtn='reject']");
+  I.waitForText("Lot Munich 26 - active");
+  I.click("[data-test-swipeBtn='accept']");
+  I.waitForText("Lot Munich 30 - inactive");
+});

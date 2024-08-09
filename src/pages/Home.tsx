@@ -36,6 +36,7 @@ function Home() {
           aria-label="Disabled button group"
         >
           <Button
+            data-test-toggleBtn="Summary"
             onClick={() => setIsSummaryView(true)}
             variant={IsSummaryView ? "contained" : "outlined"}
             className={styles.button}
@@ -46,6 +47,7 @@ function Home() {
             Summary View
           </Button>
           <Button
+            data-test-toggleBtn="Card"
             variant={!IsSummaryView ? "contained" : "outlined"}
             onClick={() => setIsSummaryView(false)}
             className={styles.button}

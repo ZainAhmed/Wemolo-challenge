@@ -17,7 +17,7 @@ function SummarySection({ parkingLots, title, fallbackText }: PropsType) {
     <>
       <div className={`${styles.headingContainer} ${styles.blueHeading}`}>
         <div className={styles.headingWrapper}>
-          <h1>{title}</h1>
+          <h1 data-test-summaryHeading={title}>{title}</h1>
           <SortFilterButtons
             lots={lots}
             setLots={setLots}
@@ -26,7 +26,9 @@ function SummarySection({ parkingLots, title, fallbackText }: PropsType) {
         </div>
       </div>
       {lots.length > 0 ? (
-        <Carousel slides={lots} />
+        <div data-test-carousel={title}>
+          <Carousel slides={lots} />
+        </div>
       ) : (
         <div className={styles.fallbackTextContainer}>
           <h2 className={`${styles.heading} ${styles.whiteHeading}`}>
